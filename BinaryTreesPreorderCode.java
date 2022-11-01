@@ -109,6 +109,45 @@ public class BinaryTreesPreorderCode {
 
             return ls+rs+root.data;
         }
+
+        //Calculate diameter
+
+        private static int diameter(Node root){
+            if(root ==null){
+                return 0;
+            }
+            int leftDia = diameter(root.left);
+            int leftHt = height(root.left);
+            int rightDia = diameter(root.right);
+            int rightHt = height(root.right);
+
+            int selfDia = leftHt+rightHt+1;
+            return(Math.max(selfDia,Math.max(leftDia,rightDia)));
+
+        }
+
+        //TO CALCULATE DIAMETER WITH T.C --O(N)
+        static class Info{
+            int diam;
+            int ht;
+            Info(int diam, int ht){
+                this.diam = diam;
+                this.ht = ht;
+
+            }
+        }
+            private static Info diameter2(Node root){
+                if(root==null){
+                    return new Info(0, 0);
+                }
+              Info leftInfo = diameter2(root.left);
+              Info rightInfo = diameter2(root.right);
+
+              int dia = Math.max(Math.max(leftInfo.diam,rightInfo.diam),leftInfo.ht + rightInfo.ht + 1);
+              int height = Math.max(leftInfo.ht,rightInfo.ht)+1;
+              return new Info(dia, height);
+            }
+        
     }
     public static void main(String[] args) {
         //time complexity---O(n)
@@ -139,5 +178,18 @@ public class BinaryTreesPreorderCode {
 
         //sum of nodes
         System.out.println("sum of roots = "+ BinaryTree.sum(root));
+
+    //        1
+    //       / \
+    //      2   3
+    //     / \   \
+    //    4  5    6
+
+    //maximum diameter of the tree
+    System.out.println("maximum diameter of tree = "+BinaryTree.diameter(root));
+    System.out.println("maximum diameter of tree = "+BinaryTree.diameter2(root).diam+" and max ht of tree is = "+BinaryTree.diameter2(root).ht);
+
+
     }
 }
+    
