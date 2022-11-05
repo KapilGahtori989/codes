@@ -18,7 +18,7 @@ public class BinaryTreeTopView {
         int hd;
         Info(Node node, int hd){
             this.node = node;
-            this.hd = hd;
+            this.hd = hd;//horizontal distance
         }
     }
 
