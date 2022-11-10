@@ -109,7 +109,7 @@ public class AVLTrees {
         }
         System.out.print(root.data+" ");
         preOrder(root.left);
-        preOrder(root.right);
+        preOrder(root.right); 
     }
 
     public static void main(String[] args) {
