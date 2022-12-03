@@ -76,7 +76,9 @@ public class GraphModifiedBFSandDFS{
     private static void dfs(ArrayList<Edge>[] graph){
         boolean vis[] = new boolean[graph.length];
         for(int i=0;i<graph.length;i++){
-            dfsUtil(graph, i, vis);
+            if(!vis[i]){
+                dfsUtil(graph, i, vis);
+            }
         }
     }
     private static void dfsUtil(ArrayList<Edge> graph[],int curr,boolean vis[]){
